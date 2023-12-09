@@ -27,7 +27,7 @@ Aleo Network에 Leo프로그램을 배포하는 예제를 살펴보겠습니다.
 	- 계정에서 새 지갑을 생성할 수 있습니다.
 	- `leo account new`  로 생성 후 확인된 개인 키(Private Key)를 import하여 계정을 추가할 수 있습니다.
 
-3. `leo new <NAME>`을 통한 새 프로젝트를 생성시 .env에서 확인되는 PrivateKey를 import하여 지갑주소를 확인 하는 방법도 있습니다.
+3. `leo new <NAME>`을 통한 새 프로젝트를 생성시, 해당 프로젝트에 대한 계정이 자동으로 생성됩니다. 프로젝트 내 .env 파일에서 PrivateKey를 확인할 수 있고, 이를 import하여 지갑주소를 추가하는 방법도 있습니다.
 
 
 ## Aleo Testnet 토큰 받기
@@ -179,7 +179,7 @@ input: Token = Token {
 };
 ```
 
-`leo run mint`를 실행시키면 아래와 같은 결과값을 확인하실 수 있습니다.
+`leo run transfer`를 실행시키면 아래와 같은 결과값을 확인하실 수 있습니다.
 
 ```
 Leo ✅ Compiled 'main.leo' into Aleo instructions
@@ -222,14 +222,15 @@ cd .. && snarkos developer deploy "${APPNAME}.aleo" --private-key "${PRIVATEKEY}
 
 PRIVATEKEY는 .env에 사용했던 키 값을 사용합니다. 해당 예제에서 project_name은 token_{RANDOM}값이 될 것 입니다.
 
-작성한 deply 스크립트를 실행시킵니다.
+
 
 window유저인 경우 설치과정에서 시스템 환경변수를 설정하였다면 아래에 해당되는 부분를 커맨드창에 실행시켜 배포 진행을 할 수 있습니다.
 ```
 snarkos developer deploy "${APPNAME}.aleo" --private-key "${PRIVATEKEY}" --query "https://api.explorer.aleo.org/v1" --path "./${APPNAME}/build/" --broadcast "https://api.explorer.aleo.org/v1/testnet3/transaction/broadcast" --priority-fee 0
 ``` 
 
-실행 후 결과 화면
+
+작성한 deploy 스크립트를 실행하거나 CLI를 통해 실행하여 배포 성공 시 아래와 같은 결과를 확인하실 수 있습니다.
 
 ![](./deploy_successed.png)
 
